@@ -1,0 +1,167 @@
+<!DOCTYPE >
+<meta charset="utf-8" />
+<head>
+<title></title>
+<script src="js/jquery-3.4.1.min.js"></script>
+<script src="js/swiper.min.js"></script>
+<script src="js/jquery.touchSwipe.min.js"></script>
+<script src="js/video.min.js"></script>
+<link href="css/video-js.min.css" rel="stylesheet">
+<style type="text/css">
+body {
+/* 	background-color: black; */
+	margin: 0;
+}
+.video-container {
+	width: 100%;
+	height: 100%;
+	display: block;
+	top: 100%;
+	position: fixed;
+}
+.video {
+	width: 100%;
+	height: 100%;
+}
+/*不显示时间条*/
+video::-webkit-media-controls { 
+	object-fit: fill; /*设置预览图铺满*/
+	display: none !important;
+}
+</style>
+</head>
+<body>
+	<div id="video-box">
+		<div id="video1" class="video-container" style="top: -100%;">
+			  <video id="video_1" class="video video-js" style="margin:0 auto" data-setup="{}">
+   			 	<source src="https://js2.a.yximgs.com/upic/2019/02/21/08/BMjAxOTAyMjEwODQzNDFfOTc0ODg5OTY4XzEwOTIwMDYyMDY3XzFfMw==_b_B10022158709b7d2a644308d079edbd90.mp4" type="video/mp4">
+ 			 </video>
+		</div>
+		<div id="video2" class="video-container">
+			  <video class="video video-js" style="margin:0 auto"
+			  	controls  muted autoplay="true" loop="loop" data-setup="{}">
+   			 	<source src="https://js2.a.yximgs.com/upic/2019/02/21/08/BMjAxOTAyMjEwODQzNDFfOTc0ODg5OTY4XzEwOTIwMDYyMDY3XzFfMw==_b_B10022158709b7d2a644308d079edbd90.mp4" type="video/mp4">
+ 			 </video>
+		</div>
+		<div id="video3" class="video-container">
+			  <video class="video video-js" style="margin:0 auto"
+			  	controls  muted autoplay="true" loop="loop" data-setup="{}">
+   			 	<source src="https://js2.a.yximgs.com/upic/2019/02/21/08/BMjAxOTAyMjEwODQzNDFfOTc0ODg5OTY4XzEwOTIwMDYyMDY3XzFfMw==_b_B10022158709b7d2a644308d079edbd90.mp4" type="video/mp4">
+ 			 </video>
+		</div>
+		<div id="video4" class="video-container">
+			  <video class="video video-js" style="margin:0 auto"
+			  	controls  muted autoplay="true" loop="loop" data-setup="{}">
+   			 	<source src="https://js2.a.yximgs.com/upic/2019/02/21/08/BMjAxOTAyMjEwODQzNDFfOTc0ODg5OTY4XzEwOTIwMDYyMDY3XzFfMw==_b_B10022158709b7d2a644308d079edbd90.mp4" type="video/mp4">
+ 			 </video>
+		</div>
+	</div>
+</body>
+<script type="text/javascript">
+	$(document).ready(
+		function() {
+			var nowpage = 1;
+			load1();
+			function load1() {
+				$("#video1").animate({
+					top : "0%"
+				}, 400);
+			}
+			function move1() {
+				$("#video1").animate({
+					top : "-100%"
+				}, 400);
+			}
+			function load2() {
+				$("#video2").animate({
+					top : "0%"
+				}, 400);
+			}
+			function move2to1() {
+				$("#video2").animate({
+					top : "100%"
+				}, 400);
+			}
+			function move2to3() {
+				$("#video2").animate({
+					top : "-100%"
+				}, 400);
+			}
+			function load3() {
+				$("#video3").animate({
+					top : "0%"
+				}, 400);
+			}
+			function move3() {
+				$("#video3").animate({
+					top : "100%"
+				}, 400);
+			}
+			function move3to4() {
+				$("#video3").animate({
+					top : "-100%"
+				}, 400);
+			}
+			function load4() {
+				$("#video4").animate({
+					top : "0%"
+				}, 400);
+			}
+			function move4() {
+				$("#video4").animate({
+					top : "100%"
+				}, 400);
+			}
+			$("#video-box").swipe({
+				swipe : function(event, direction, distance, duration, fingerCount) {
+					if (direction == "up") {
+						nowpage = nowpage + 1;
+						if (nowpage == 2) {
+							move1();
+							load2();
+						}
+						if (nowpage == 3) {
+							move2to3();
+							load3();
+						}
+						if (nowpage == 4) {
+							move3to4();
+							load4();
+						}
+					} else if (direction == "down") {
+						nowpage = nowpage - 1;
+						if (nowpage == 1) {
+							move2to1();
+							load1();
+						}
+						if (nowpage == 2) {
+							move3();
+							load2();
+						}
+						if (nowpage == 3) {
+							move4();
+							load3();
+						}
+					}
+					if (nowpage > 4) {
+						nowpage = 4;
+					}
+					if (nowpage < 0) {
+						nowpage = 0;
+					}
+				}
+			});
+			
+			var player = videojs('video_1',{
+    			muted: true,
+				controls : true,      
+				loop : true,
+				auto : true
+			});
+			
+			player.play();
+		}
+		
+		
+	);
+</script>
