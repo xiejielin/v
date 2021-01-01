@@ -5,7 +5,6 @@
 <script src="js/jquery-3.4.1.min.js"></script>
 <script src="js/swiper.min.js"></script>
 <script src="js/jquery.touchSwipe.min.js"></script>
-</head>
 <style type="text/css">
 body {
 	background-color: black;
@@ -15,40 +14,42 @@ body {
 	width: 100%;
 	height: 100%;
 	display: block;
-	top: -100%;
+	top: 100%;
 	position: fixed;
 }
 .video {
 	width: 100%;
 	height: 100%;
 }
-video::-webkit-media-controls { /*不显示时间条*/
+/*不显示时间条*/
+video::-webkit-media-controls { 
 	object-fit: fill; /*设置预览图铺满*/
 	display: none !important;
 }
 </style>
+</head>
 <body>
-	<div id="div0">
-		<div id="div1" class="video-container">
+	<div id="video-box">
+		<div id="video1" class="video-container" style="top: -100%">
 			<video 
 				class="video" controls="controls" muted autoplay="true" page-gesture="true" loop="loop"
 				src="https://bdmov.a.yximgs.com/upic/2019/08/26/22/BMjAxOTA4MjYyMjAxNDZfMTAxODk4MTQ3Nl8xNjg0MTAwODY5NV8xXzM=_b_Bb3bbb1185b63c098fc8b0b56abeeba5a.mp4">
 			</video>
 			
 		</div>
-		<div id="div2" class="video-container">
+		<div id="video2" class="video-container">
 			<video 
 				class="video" controls="controls" muted autoplay="true" page-gesture="true" loop="loop"
 				src="https://jsmov2.a.yximgs.com/upic/2018/07/07/13/BMjAxODA3MDcxMzUyMzJfMTAwNDY3OTg1MV83MDA5MTU3NDE3XzFfMw==_hd3_B0af5b623763ecda15805d4e524582541.mp4">
 			</video>
 		</div>
-		<div id="div3" class="video-container">
+		<div id="video3" class="video-container">
 			<video 
 				class="video" controls="controls" muted autoplay="true" page-gesture="true" loop="loop"
 				src="https://bdmov.a.yximgs.com/upic/2019/08/02/15/BMjAxOTA4MDIxNTI2MjNfMTM5MzY0MDQ4OF8xNTkxNDI4MzMxOV8xXzM=_b_Bf93c3ed73f408f60ac8d1da8611ecee1.mp4">
 			</video>
 		</div>
-		<div id="div4" class="video-container">
+		<div id="video4" class="video-container">
 			<video 
 				class="video" controls="controls" muted autoplay="true" page-gesture="true" loop="loop"
 				src="https://tx2.a.yximgs.com/upic/2019/02/12/21/BMjAxOTAyMTIyMTIxMjVfNjA1NDYwOF8xMDY5OTQxOTE1N18xXzM=_b_Be77e389b527890e6f68607fb8d362007.mp4">
@@ -62,56 +63,56 @@ video::-webkit-media-controls { /*不显示时间条*/
 			var nowpage = 1;
 			load1();
 			function load1() {
-				$("#div1").animate({
+				$("#video1").animate({
 					top : "0%"
 				}, 400);
 			}
 			function move1() {
-				$("#div1").animate({
+				$("#video1").animate({
 					top : "-100%"
 				}, 400);
 			}
 			function load2() {
-				$("#div2").animate({
+				$("#video2").animate({
 					top : "0%"
 				}, 400);
 			}
 			function move2to1() {
-				$("#div2").animate({
+				$("#video2").animate({
 					top : "100%"
 				}, 400);
 			}
 			function move2to3() {
-				$("#div2").animate({
+				$("#video2").animate({
 					top : "-100%"
 				}, 400);
 			}
 			function load3() {
-				$("#div3").animate({
+				$("#video3").animate({
 					top : "0%"
 				}, 400);
 			}
 			function move3() {
-				$("#div3").animate({
+				$("#video3").animate({
 					top : "100%"
 				}, 400);
 			}
 			function move3to4() {
-				$("#div3").animate({
+				$("#video3").animate({
 					top : "-100%"
 				}, 400);
 			}
 			function load4() {
-				$("#div4").animate({
+				$("#video4").animate({
 					top : "0%"
 				}, 400);
 			}
 			function move4() {
-				$("#div4").animate({
+				$("#video4").animate({
 					top : "100%"
 				}, 400);
 			}
-			$("#div0").swipe({
+			$("#video-box").swipe({
 				swipe : function(event, direction, distance, duration, fingerCount) {
 					if (direction == "up") {
 						nowpage = nowpage + 1;
