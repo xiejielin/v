@@ -1,0 +1,54 @@
+<!DOCTYPE >
+<meta charset="utf-8" />
+<head>
+<title></title>
+<script src="js/polyvplayer.min.js"></script>
+<script src="js/player.js"></script>
+<style type="text/css">
+body {
+/* 	background-color: black; */
+	margin: 0;
+}
+.video-container {
+	width: 100%;
+	height: 100%;
+	display: block;
+	top: 100%;
+	position: fixed;
+}
+.video {
+	width: 100%;
+	height: 100%;
+}
+/*不显示时间条*/
+video::-webkit-media-controls { 
+	object-fit: fill; /*设置预览图铺满*/
+	display: none !important;
+}
+</style>
+</head>
+<body>
+<div class="video" id='v1'></div>
+<div class="video" id='v2'></div>
+<div class="video" id='v3'></div>
+</body>
+<script type="text/javascript">
+var player = polyvObject('#v1').videoPlayer({
+'width':'600',
+'height':'337',
+'vid' : 'e785b2c81c9e018296671a1287e99615_e' ,
+'forceH5':true
+});
+var player = polyvObject('#v2').videoPlayer({
+'width':'600',
+'height':'337',
+'vid' : 'e785b2c81c9e018296671a1287e99615_e' ,
+'forceH5':true
+});
+var player = polyvObject('#v3').videoPlayer({
+'width':'600',
+'height':'337',
+'vid' : 'e785b2c81c9e018296671a1287e99615_e' ,
+'forceH5':true
+});
+</script>
